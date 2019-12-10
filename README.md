@@ -1,7 +1,7 @@
 # iism-measure
 Measurement library for Java
 
-#Usage
+# Usage
 
 Given a function named processCustomerPurchase that you want to measure whenever it is executed you can use try:
 
