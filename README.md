@@ -3,7 +3,7 @@ Measurement library for Java
 
 # Usage
 
-Given a function named processCustomerPurchase that you want to measure whenever it is executed you can use try:
+Given a function named processCustomerPurchase that you want to measure whenever it is executed you can use 'try':
 
 	try (TimeMeasure timeMeasure = TimeMeasure.getOrCreateMeasure("Purchase Processing Time")) {
 		processCustomerPurchase();
