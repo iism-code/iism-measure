@@ -13,7 +13,7 @@ class TestMeasure {
 
 	@Test
 	void testTry() throws InterruptedException {
-		try (TimeMeasure timeMeasure = TimeMeasure.getOrCreateMeasure("someImportantBusinessLogicMethod Response Time")) {
+		try (TimeMeasure timeMeasure = TimeMeasure.get("someImportantBusinessLogicMethod Response Time")) {
 			someImportantBusinessLogicMethod();
 		}
 		
@@ -22,7 +22,7 @@ class TestMeasure {
 
 	@Test
 	void testProcedural() throws InterruptedException {
-		TimeMeasure timeMeasure = TimeMeasure.getOrCreateMeasure("someOtherImportantBusinessLogicMethod Response Time");
+		TimeMeasure timeMeasure = TimeMeasure.get("someOtherImportantBusinessLogicMethod Response Time");
 		timeMeasure.startMeasure();
 		someOtherImportantBusinessLogicMethod();
 		timeMeasure.endMeasure();
@@ -33,7 +33,7 @@ class TestMeasure {
 	void testMultipleMeasurements() throws InterruptedException {
 		int measuresToGenerate = 100;
 		for( int i = 0; i < measuresToGenerate; i++) {
-			TimeMeasure timeMeasure = TimeMeasure.getOrCreateMeasure("MyImportantMeasure " + i);
+			TimeMeasure timeMeasure = TimeMeasure.get("MyImportantMeasure " + i);
 			for(int j = 0; j < 100; j++) {
 				timeMeasure.startMeasure();
 				someIntermittentlySlowImportantBusinessLogicMethod();
@@ -42,7 +42,6 @@ class TestMeasure {
 		}
 		
 		HashSet<RollupData> rollupData = new HashSet<RollupData>();
-		
 		TimeMeasure.snapshotTimeMeasureData(rollupData);
 		
 		assertTrue(rollupData.size() > 0);
@@ -88,6 +87,5 @@ class TestMeasure {
 		}
 		
 		assertTrue(foundMyMeasure);
-	}	
-
+	}
 }

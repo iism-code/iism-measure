@@ -15,17 +15,17 @@ public class TimeMeasure implements AutoCloseable {
 
 	long startTime;
 
-	public synchronized void startMeasure() {
+	public void startMeasure() {
 		startTime = System.currentTimeMillis();
 	}
 
-	public synchronized void endMeasure() {
+	public void endMeasure() {
 		long delta = System.currentTimeMillis() - startTime;
 		timeMeasureData.addMeasurement(delta);
 	}
 
 
-	synchronized public static TimeMeasure getOrCreateMeasure(String measureName) {
+	synchronized public static TimeMeasure get(String measureName) {
 
 		if (timeMeasureMap.containsKey(measureName)) {
 

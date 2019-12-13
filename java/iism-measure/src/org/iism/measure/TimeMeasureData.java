@@ -12,7 +12,6 @@ public class TimeMeasureData {
 	}
 
 	String measureName;
-	String unit;
 
 	ArrayList<Rollups> intervals = new ArrayList<Rollups>();
 
