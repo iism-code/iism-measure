@@ -5,13 +5,13 @@ Measurement library for Java
 
 Given a function named processCustomerPurchase that you want to measure whenever it is executed you can use 'try':
 
-	try (TimeMeasure timeMeasure = TimeMeasure.getOrCreateMeasure("Purchase Processing Time")) {
+	try (TimeMeasure timeMeasure = TimeMeasure.get("Purchase Processing Time")) {
 		processCustomerPurchase();
 	}
 
 Or just manually call startMeasure and endMeasure:
 
-	TimeMeasure timeMeasure = TimeMeasure.getOrCreateMeasure("Purchase Processing Time");
+	TimeMeasure timeMeasure = TimeMeasure.get("Purchase Processing Time");
 	timeMeasure.startMeasure();
 	processCustomerPurchase();
 	timeMeasure.endMeasure();
